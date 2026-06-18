@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Vercel
+.vercel
+
+# Claude Code local preview config
+.claude/
+
+# Logs / deps (in case tooling is added later)
+*.log
+node_modules/
