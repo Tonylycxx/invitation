@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>刘禹辰 & 王思越 · 婚礼请柬</title>
+<meta property="og:title" content="🌸 诚邀您见证我们的幸福时刻">
+<meta property="og:description" content="刘禹辰 & 王思越 · 2026年9月26日 · 北京友谊宾馆贵宾楼">
+<meta property="og:image" content="photos/cover.jpg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --rose:#C9727A; --rose-light:#E8B4B8; --rose-pale:#F5E4E6;
+  --gold:#C9A96E; --cream:#FBF5F2; --warm:#F4EBE8;
+  --dark:#2C1A1A; --mid:#6B3F3F; --muted:#A07070; --white:#FFFFFF;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;
+  font-family:'PingFang SC','Noto Serif SC','SimSun',sans-serif;
+  background:var(--dark);-webkit-tap-highlight-color:transparent;
+  -webkit-user-select:none;user-select:none;touch-action:pan-y;}
+
+#stage{display:flex;width:100vw;height:100vh;transform:translateX(0);
+  transition:transform .52s cubic-bezier(.77,0,.175,1);will-change:transform;}
+.page{flex:none;width:100vw;height:100vh;overflow:hidden;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;}
+
+/* dots */
+#dots{position:fixed;right:13px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:9px;z-index:200;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);
+  cursor:pointer;transition:all .3s;}
+.dot.on{background:#fff;transform:scale(1.6);}
+.dot.dark{background:rgba(44,26,26,.25);}
+.dot.dark.on{background:var(--rose);}
+
+/* hint */
+#hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;z-index:200;transition:opacity .5s;}
+#hint.gone{opacity:0;pointer-events:none;}
+#hint span{font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.65);text-transform:uppercase;}
+.swipe-chevron{width:26px;height:26px;border-right:1.5px solid rgba(255,255,255,.6);
+  border-bottom:1.5px solid rgba(255,255,255,.6);transform:rotate(-45deg);
+  animation:chevron 1.6s ease-in-out infinite;}
+@keyframes chevron{0%,100%{transform:rotate(-45deg) translate(0,0);opacity:.5;}
+  50%{transform:rotate(-45deg) translate(5px,5px);opacity:1;}}
+
+/* typography */
+.eyebrow{font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--rose);margin-bottom:10px;}
+.eyebrow.light{color:var(--rose-light);}
+.title-en{font-family:'Playfair Display',serif;font-size:30px;font-weight:400;color:var(--dark);line-height:1.2;}
+.title-en em{font-style:italic;color:var(--rose);}
+.title-en.on-dark{color:#fff;}
+.hairline{width:36px;height:1px;background:var(--rose-light);margin:14px auto;}
+.hairline.light{background:rgba(255,255,255,.25);}
+.body-cn{font-size:13.5px;line-height:2;color:var(--mid);font-weight:300;}
+.body-cn.on-dark{color:rgba(255,255,255,.65);}
+
+/* entrance */
+.in{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+.in.d1{transition-delay:.1s;}.in.d2{transition-delay:.22s;}.in.d3{transition-delay:.36s;}
+.in.d4{transition-delay:.5s;}.in.d5{transition-delay:.65s;}
+.in.show{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.in{opacity:1;transform:none;transition:none;}
+  .swipe-chevron,.petal,.conf{animation:none !important;}}
+
+/* photo bg */
+.photo-bg{position:absolute;inset:0;overflow:hidden;}
+.photo-bg img{width:100%;height:100%;object-fit:cover;}
+.dark-grad{position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(44,26,26,.15) 0%,rgba(44,26,26,.62) 100%);}
+.p1 .dark-grad{
+  background:linear-gradient(to bottom,rgba(44,26,26,.05) 0%,rgba(44,26,26,.18) 42%,rgba(44,26,26,.8) 100%);}
+.dark-grad.even{background:rgba(44,26,26,.42);}
+
+/* ---------- P1 HERO ---------- */
+.p1 .petals{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.petal{position:absolute;top:-30px;width:16px;height:20px;
+  background:radial-gradient(ellipse at 35% 35%,rgba(255,225,230,.9),rgba(201,114,122,.5));
+  border-radius:60% 40% 60% 40%/40% 60% 40% 60%;animation:fall linear infinite;opacity:0;}
+.petal:nth-child(1){left:7%;animation-duration:7s;animation-delay:0s;width:12px;height:16px;}
+.petal:nth-child(2){left:17%;animation-duration:9s;animation-delay:1.5s;}
+.petal:nth-child(3){left:29%;animation-duration:6s;animation-delay:.6s;width:10px;height:14px;}
+.petal:nth-child(4){left:44%;animation-duration:8s;animation-delay:2.2s;}
+.petal:nth-child(5){left:58%;animation-duration:7.5s;animation-delay:.9s;width:14px;height:18px;}
+.petal:nth-child(6){left:70%;animation-duration:6.5s;animation-delay:3s;}
+.petal:nth-child(7){left:82%;animation-duration:9s;animation-delay:1.1s;width:11px;height:15px;}
+.petal:nth-child(8){left:93%;animation-duration:7s;animation-delay:2.8s;width:9px;height:12px;}
+@keyframes fall{0%{transform:translateY(0) rotate(0) translateX(0);opacity:0;}
+  8%{opacity:.85;}90%{opacity:.6;}100%{transform:translateY(108vh) rotate(700deg) translateX(35px);opacity:0;}}
+.p1{justify-content:flex-end;}
+.p1 .hero-inner{position:relative;z-index:2;text-align:center;padding:0 40px 92px;}
+.p1 .hero-tag{font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.7);text-transform:uppercase;margin-bottom:22px;}
+.p1 .hero-names{font-family:'Playfair Display',serif;font-size:40px;font-weight:400;color:#fff;line-height:1.2;margin-bottom:5px;}
+.p1 .hero-names .cn{font-family:'PingFang SC','Noto Serif SC',serif;font-weight:300;font-size:36px;}
+.p1 .hero-names .amp{font-style:italic;color:var(--rose-light);font-size:30px;margin:0 10px;}
+.p1 .hero-divider{width:54px;height:1px;background:rgba(255,255,255,.45);margin:18px auto;}
+.p1 .hero-sub{font-size:11px;letter-spacing:.25em;color:rgba(255,255,255,.8);text-transform:uppercase;}
+
+/* ---------- P2 STORY ---------- */
+.p2{background:var(--cream);padding:52px 36px;text-align:center;}
+
+/* ---------- P3 COUPLE (avatars) ---------- */
+.p3{background:var(--warm);padding:44px 28px;}
+.p3 .top-label{text-align:center;margin-bottom:4px;}
+.couple-row{display:flex;align-items:flex-start;gap:16px;width:100%;margin-top:8px;}
+.person{flex:1;text-align:center;}
+.portrait{width:118px;height:148px;margin:0 auto 14px;border-radius:60px;overflow:hidden;
+  border:3px solid #fff;
+  box-shadow:0 6px 20px rgba(201,114,122,.28),0 0 0 1px rgba(201,114,122,.25);
+  position:relative;}
+.portrait::after{content:'';position:absolute;inset:0;border-radius:60px;
+  box-shadow:inset 0 0 18px rgba(245,228,230,.5);}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(1.02) contrast(1.02);}
+.person-name{font-size:17px;color:var(--dark);margin-bottom:7px;font-weight:400;letter-spacing:.05em;}
+.person-verse{font-size:11px;line-height:1.85;color:var(--muted);}
+.amp-col{display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:58px;flex:0 0 36px;}
+.amp-sym{font-family:'Playfair Display',serif;font-style:italic;font-size:34px;color:var(--rose);}
+.couple-since{margin-top:22px;text-align:center;font-size:11px;letter-spacing:.12em;
+  color:var(--muted);font-style:italic;font-family:'Playfair Display',serif;}
+
+/* ---------- P4 SAVE THE DATE (+ attire note) ---------- */
+.p4{background:var(--dark);padding:46px 32px;}
+.info-cards{display:flex;flex-direction:column;gap:11px;width:100%;margin-top:18px;}
+.info-card{display:flex;align-items:flex-start;gap:13px;padding:14px 16px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);border-radius:14px;}
+.info-icon{font-size:19px;flex-shrink:0;margin-top:2px;}
+.info-label{font-size:9px;letter-spacing:.28em;color:var(--rose-light);text-transform:uppercase;margin-bottom:4px;}
+.info-val{font-size:14px;color:#fff;line-height:1.4;}
+.info-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:3px;}
+.attire-note{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;font-size:11.5px;line-height:1.85;color:rgba(255,255,255,.5);}
+.attire-note strong{color:var(--rose-light);font-weight:400;}
+
+/* ---------- P5 FIND US ---------- */
+.p5{background:var(--cream);padding:46px 32px;}
+.venue-name{text-align:center;font-size:15px;color:var(--dark);margin-top:6px;letter-spacing:.04em;}
+.venue-addr{text-align:center;font-size:11.5px;color:var(--muted);margin-top:4px;margin-bottom:6px;}
+.dir-list{display:flex;flex-direction:column;gap:15px;width:100%;margin-top:14px;}
+.dir-item{display:flex;gap:13px;align-items:flex-start;}
+.dir-num{width:28px;height:28px;border-radius:50%;background:var(--rose-pale);
+  border:1px solid var(--rose-light);display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--rose);flex-shrink:0;font-family:'Playfair Display',serif;}
+.dir-head{font-size:12.5px;font-weight:600;color:var(--dark);margin-bottom:3px;}
+.dir-desc{font-size:11.5px;color:var(--muted);line-height:1.65;}
+.map-btn{display:inline-block;margin:18px auto 0;padding:9px 22px;border-radius:22px;
+  background:var(--rose);color:#fff;font-size:12px;letter-spacing:.08em;text-decoration:none;
+  box-shadow:0 4px 14px rgba(201,114,122,.35);}
+
+/* ---------- P6 GALLERY (horizontal swipe) ---------- */
+.p6{background:var(--dark);padding:40px 0 30px;}
+.p6 .eyebrow,.p6 .title-en,.p6 .hairline{padding-left:32px;padding-right:32px;}
+.gallery-track{display:flex;gap:14px;width:100%;margin-top:18px;overflow-x:auto;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  padding:0 32px 6px;scrollbar-width:none;}
+.gallery-track::-webkit-scrollbar{display:none;}
+.gcard{flex:0 0 82%;scroll-snap-align:center;border-radius:14px;overflow:hidden;
+  background:linear-gradient(160deg,#2a1a1a,#1c1010);box-shadow:0 8px 24px rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center;
+  height:58vh;max-height:500px;padding:6px;}
+.gcard img{max-width:100%;max-height:100%;width:auto;height:auto;
+  object-fit:contain;display:block;border-radius:9px;}
+.gallery-cap{text-align:center;margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);
+  font-style:italic;letter-spacing:.05em;}
+.gallery-cap .arrow{display:inline-block;margin-left:6px;animation:nudge 1.5s ease-in-out infinite;}
+@keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
+
+/* ---------- P7 PHOTO FULLBLEED ---------- */
+.p7-text{position:absolute;bottom:68px;left:0;right:0;text-align:center;padding:0 36px;z-index:2;}
+.p7-quote-main{font-size:22px;color:#fff;line-height:1.65;margin-bottom:8px;text-shadow:0 2px 20px rgba(44,26,26,.5);}
+.p7-quote-sub{font-size:12px;color:rgba(255,255,255,.6);letter-spacing:.08em;}
+
+/* ---------- P8 HEART ---------- */
+.p8{background:var(--warm);padding:52px 36px;}
+.blockquote{background:var(--rose-pale);border-left:3px solid var(--rose);
+  padding:14px 18px;border-radius:0 10px 10px 0;margin:14px 0;}
+.blockquote p{font-size:13px;line-height:1.95;color:var(--mid);font-style:italic;}
+
+/* ---------- P9 THANK YOU ---------- */
+.p9-inner{position:relative;z-index:2;text-align:center;padding:0 40px;}
+.p9-title{font-family:'Playfair Display',serif;font-size:46px;font-weight:400;color:#fff;margin-bottom:10px;}
+.p9-names{font-size:18px;color:rgba(255,255,255,.9);letter-spacing:.18em;margin-bottom:14px;}
+.p9-line{width:46px;height:1px;background:rgba(255,255,255,.3);margin:0 auto 14px;}
+.p9-sub{font-size:12px;color:rgba(255,255,255,.55);line-height:2;}
+.confetti-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.conf{position:absolute;width:6px;height:10px;border-radius:2px;top:-20px;animation:conf-fall ease-in infinite;opacity:0;}
+.conf:nth-child(1){left:10%;background:var(--rose-light);animation-duration:4s;animation-delay:.2s;}
+.conf:nth-child(2){left:25%;background:var(--gold);animation-duration:5s;animation-delay:1s;transform:rotate(40deg);}
+.conf:nth-child(3){left:42%;background:var(--rose-pale);animation-duration:4.5s;animation-delay:.5s;}
+.conf:nth-child(4){left:58%;background:var(--gold);animation-duration:3.8s;animation-delay:1.5s;transform:rotate(-30deg);}
+.conf:nth-child(5){left:73%;background:var(--rose-light);animation-duration:5s;animation-delay:.8s;}
+.conf:nth-child(6){left:88%;background:#fff;animation-duration:4.2s;animation-delay:2s;}
+@keyframes conf-fall{0%{transform:translateY(0) rotate(0);opacity:0;}10%{opacity:.8;}
+  90%{opacity:.6;}100%{transform:translateY(110vh) rotate(540deg);opacity:0;}}
+</style>
+</head>
+<body>
+
+<nav id="dots"></nav>
+<div id="hint"><span>左右滑动</span><div class="swipe-chevron"></div></div>
+
+<div id="stage">
+
+  <!-- P1 HERO -->
+  <section class="page p1" data-dots="light">
+    <div class="photo-bg"><img src="photos/cover.jpg" alt="封面"></div>
+    <div class="dark-grad"></div>
+    <div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div>
+    <div class="hero-inner">
+      <div class="hero-tag in">Wedding Invitation · 2026</div>
+      <div class="hero-names in d1"><span class="cn">刘禹辰</span><span class="amp">&</span><span class="cn">王思越</span></div>
+      <div class="hero-divider in d2"></div>
+      <div class="hero-sub in d3">Our Story Begins</div>
+    </div>
+  </section>
+
+  <!-- P2 STORY -->
+  <section class="page p2" data-dots="dark">
+    <span class="eyebrow in">A Story of Love</span>
+    <h2 class="title-en in d1">我们的<em>故事</em></h2>
+    <div class="hairline in d1"></div>
+    <p class="body-cn in d2" style="text-align:justify">从相识的那一刻起，我们的世界便多了一抹绚丽的色彩。那是一次不经意的回眸，却让每一个平凡的日子，都因彼此的出现而变得熠熠生辉，充满了温柔的期许。</p><br>
+    <p class="body-cn in d3" style="text-align:justify">时光流转，爱意渐浓。那些一起走过的路，一起看过的晨昏与四季，都化作细碎的美好，静静编织成我们生命中最珍贵的独家回忆。</p><br>
+    <p class="body-cn in d4" style="text-align:justify">如今，我们决定携手步入人生的下一章节。诚邀您，与我们共同见证这个属于我们的、最幸福的时刻。</p>
+  </section>
+
+  <!-- P3 COUPLE -->
+  <section class="page p3" data-dots="dark">
+    <span class="eyebrow in top-label">The Couple</span>
+    <div class="couple-row in d1">
+      <div class="person">
+        <div class="portrait"><img src="photos/groom.jpg" alt="新郎"></div>
+        <div class="person-name">刘禹辰</div>
+        <div class="person-verse">始于初见，止于终老<br>往后余生，风雪是你</div>
+      </div>
+      <div class="amp-col"><div class="amp-sym">&</div></div>
+      <div class="person">
+        <div class="portrait"><img src="photos/bride.jpg" alt="新娘"></div>
+        <div class="person-name">王思越</div>
+        <div class="person-verse">以爱之名，共赴山海<br>繁华是你，温柔也是你</div>
+      </div>
+    </div>
+    <div class="couple-since in d3">Est. 2020 · 从此，我们的故事合二为一</div>
+  </section>
+
+  <!-- P4 SAVE THE DATE -->
+  <section class="page p4" data-dots="light">
+    <span class="eyebrow light in">Mark Your Calendar</span>
+    <h2 class="title-en on-dark in d1">Save the Date</h2>
+    <div class="hairline light in d1"></div>
+    <div class="info-cards in d2">
+      <div class="info-card"><div class="info-icon">📅</div><div>
+        <div class="info-label">Date</div><div class="info-val">2026年9月26日 · 星期六</div>
+        <div class="info-sub">秋高气爽，佳期如许</div></div></div>
+      <div class="info-card"><div class="info-icon">🕐</div><div>
+        <div class="info-label">Time</div><div class="info-val">11:00 仪式开始 &nbsp;/&nbsp; 12:00 午宴</div>
+        <div class="info-sub">请提前到场，见证幸福时刻</div></div></div>
+      <div class="info-card"><div class="info-icon">📍</div><div>
+        <div class="info-label">Venue</div><div class="info-val">北京友谊宾馆 · 贵宾楼</div>
+        <div class="info-sub">海淀区中关村南大街1号</div></div></div>
+    </div>
+    <p class="attire-note in d3">着装建议 · <strong>商务休闲</strong> 或 <strong>优雅礼服</strong><br>盛装出席的您，是婚礼上最动人的风景</p>
+  </section>
+
+  <!-- P5 FIND US -->
+  <section class="page p5" data-dots="dark">
+    <span class="eyebrow in">Getting Here</span>
+    <h2 class="title-en in d1">How to <em>Find Us</em></h2>
+    <div class="hairline in d1"></div>
+    <div class="venue-name in d2">北京友谊宾馆 · 贵宾楼</div>
+    <div class="venue-addr in d2">海淀区中关村南大街1号（四通桥西南角）</div>
+    <div class="dir-list in d2">
+      <div class="dir-item"><div class="dir-num">1</div><div>
+        <div class="dir-head">🚇 地铁</div>
+        <div class="dir-desc">乘地铁4号线（大兴线）至「人民大学站」，西南口出站后南行约100米即达宾馆东大门。</div></div></div>
+      <div class="dir-item"><div class="dir-num">2</div><div>
+        <div class="dir-head">🚗 驾车</div>
+        <div class="dir-desc">导航搜索「北京友谊宾馆贵宾楼」，位于三环四通桥西南角，宾馆内设停车场。</div></div></div>
+      <div class="dir-item"><div class="dir-num">3</div><div>
+        <div class="dir-head">🚌 公交</div>
+        <div class="dir-desc">「友谊宾馆」或「四通桥西」站下车，可乘26路、651路等多条线路抵达。</div></div></div>
+    </div>
+    <a class="map-btn in d3" href="https://uri.amap.com/marker?name=北京友谊宾馆贵宾楼&address=北京市海淀区中关村南大街1号" target="_blank" rel="noopener">📍 打开地图导航</a>
+  </section>
+
+  <!-- P6 GALLERY -->
+  <section class="page p6" data-dots="light">
+    <span class="eyebrow light in">Our Moments</span>
+    <h2 class="title-en on-dark in d1">点滴<em>瞬间</em></h2>
+    <div class="hairline light in d1"></div>
+    <div class="gallery-track in d2">
+      <div class="gcard"><img src="photos/alb1.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb2.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb3.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb4.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb5.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb6.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb7.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb8.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb9.jpg" alt="合照"></div>
+      <div class="gcard"><img src="photos/alb10.jpg" alt="合照"></div>
+    </div>
+    <div class="gallery-cap in d3">滑动查看更多<span class="arrow">→</span></div>
+  </section>
+
+  <!-- P7 PHOTO FULLBLEED -->
+  <section class="page p7" data-dots="light">
+    <div class="photo-bg"><img src="photos/couple-big.jpg" alt="婚纱照"></div>
+    <div class="dark-grad"></div>
+    <div class="p7-text">
+      <div class="p7-quote-main in">每一张照片<br>都是我们爱情的印记</div>
+      <div class="p7-quote-sub in d2">分享我们的喜悦，定格我们的幸福</div>
+    </div>
+  </section>
+
+  <!-- P8 HEART -->
+  <section class="page p8" data-dots="dark">
+    <span class="eyebrow in">From Us to You</span>
+    <h2 class="title-en in d1">With All <em>Our Heart</em></h2>
+    <div class="hairline in d1"></div>
+    <p class="body-cn in d2">感谢您一直以来的关爱与陪伴，那些细碎而温柔的时光，拼凑成了我们生命里最温暖的底色。您的包容与支持，是我们步入新阶段时最踏实的底气。</p>
+    <div class="blockquote in d3"><p>您的到来，是我们收到的最好礼物。这份心意，胜过世间万千繁花，我们将永远珍藏心底。</p></div>
+    <p class="body-cn in d4">热切期盼，与您在这个充满爱意的特别日子里相聚，共同见证这份承诺，分享此刻的幸福与感动。</p>
+  </section>
+
+  <!-- P9 THANK YOU -->
+  <section class="page p9" data-dots="light">
+    <div class="photo-bg"><img src="photos/end.jpg" alt="结尾"></div>
+    <div class="dark-grad even"></div>
+    <div class="confetti-wrap"><div class="conf"></div><div class="conf"></div><div class="conf"></div><div class="conf"></div><div class="conf"></div><div class="conf"></div></div>
+    <div class="p9-inner">
+      <div class="p9-title in">Thank You</div>
+      <div class="p9-names in d1">刘禹辰 &nbsp;&amp;&nbsp; 王思越</div>
+      <div class="p9-line in d2"></div>
+      <div class="p9-sub in d3">感谢您见证我们的幸福时刻<br>愿爱与美好常伴左右，永恒闪耀</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  const stage=document.getElementById('stage'),dotsNav=document.getElementById('dots'),
+    hint=document.getElementById('hint'),pages=Array.from(document.querySelectorAll('.page')),
+    total=pages.length;let cur=0,busy=false;
+  pages.forEach((p,i)=>{const d=document.createElement('div');
+    d.className='dot'+(i===0?' on':'');if(p.dataset.dots==='dark')d.classList.add('dark');
+    d.addEventListener('click',()=>go(i));dotsNav.appendChild(d);});
+  function updateDots(){dotsNav.querySelectorAll('.dot').forEach((d,i)=>{
+    d.classList.toggle('on',i===cur);d.classList.toggle('dark',pages[cur].dataset.dots==='dark');});}
+  function animate(idx){const els=pages[idx].querySelectorAll('.in');
+    els.forEach(el=>el.classList.remove('show'));
+    requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(el=>el.classList.add('show'))));}
+  function go(n){if(n===cur||busy)return;busy=true;cur=Math.max(0,Math.min(n,total-1));
+    stage.style.transform=`translateX(-${cur*100}vw)`;updateDots();
+    if(cur>0)hint.classList.add('gone');animate(cur);setTimeout(()=>{busy=false;},560);}
+  let x0=0,y0=0,inTrack=null;
+  document.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;
+    inTrack=e.target.closest('.gallery-track');},{passive:true});
+  document.addEventListener('touchend',e=>{const dx=x0-e.changedTouches[0].clientX,dy=y0-e.changedTouches[0].clientY;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>42){
+      if(inTrack){
+        const atStart=inTrack.scrollLeft<=2,
+              atEnd=inTrack.scrollLeft+inTrack.clientWidth>=inTrack.scrollWidth-2;
+        if(dx>0&&atEnd){go(cur+1);}
+        else if(dx<0&&atStart){go(cur-1);}
+      } else {
+        dx>0?go(cur+1):go(cur-1);
+      }
+    }},{passive:true});
+  let wc=false;document.addEventListener('wheel',e=>{if(wc)return;wc=true;
+    const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+    d>20?go(cur+1):d<-20?go(cur-1):null;setTimeout(()=>{wc=false;},620);},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);});
+  animate(0);
+})();
+</script>
+</body>
+</html>
