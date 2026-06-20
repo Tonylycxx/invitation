@@ -176,11 +176,11 @@ html,body{width:100%;height:100%;overflow:hidden;
   padding:0 32px 6px;scrollbar-width:none;}
 .gallery-track::-webkit-scrollbar{display:none;}
 .gcard{flex:0 0 82%;scroll-snap-align:center;border-radius:14px;overflow:hidden;
-  background:linear-gradient(160deg,#2a1a1a,#1c1010);box-shadow:0 8px 24px rgba(0,0,0,.4);
-  display:flex;align-items:center;justify-content:center;
-  height:58vh;max-height:500px;padding:6px;}
-.gcard img{max-width:100%;max-height:100%;width:auto;height:auto;
-  object-fit:contain;display:block;border-radius:9px;}
+  background:#1c1010;box-shadow:0 8px 24px rgba(0,0,0,.4);
+  position:relative;height:58vh;max-height:500px;}
+.gcard .gbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:blur(24px) brightness(.5) saturate(1.2);transform:scale(1.25);z-index:0;}
+.gcard .gfg{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block;}
 .gallery-cap{text-align:center;margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);
   font-style:italic;letter-spacing:.05em;}
 .gallery-cap .arrow{display:inline-block;margin-left:6px;animation:nudge 1.5s ease-in-out infinite;}
@@ -298,16 +298,16 @@ html,body{width:100%;height:100%;overflow:hidden;
     <h2 class="title-en on-dark in d1">点滴<em>瞬间</em></h2>
     <div class="hairline light in d1"></div>
     <div class="gallery-track in d2">
-      <div class="gcard"><img src="photos/alb1.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb2.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb3.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb4.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb5.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb6.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb7.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb8.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb9.jpg" alt="合照"></div>
-      <div class="gcard"><img src="photos/alb10.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb1.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb1.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb2.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb2.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb3.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb3.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb4.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb4.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb5.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb5.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb6.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb6.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb7.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb7.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb8.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb8.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb9.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb9.jpg" alt="合照"></div>
+      <div class="gcard"><img class="gbg" src="photos/alb10.jpg" alt="" aria-hidden="true"><img class="gfg" src="photos/alb10.jpg" alt="合照"></div>
     </div>
     <div class="gallery-cap in d3">滑动查看更多<span class="arrow">→</span></div>
   </section>
