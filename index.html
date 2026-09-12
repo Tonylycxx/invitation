@@ -10,9 +10,18 @@
 <meta name="description" content="2026年9月26日 星期六 · 北京友谊宾馆贵宾楼 · 诚邀您见证我们的幸福时刻">
 <meta property="og:title" content="刘禹辰 & 王思越 · 婚礼请柬">
 <meta property="og:description" content="2026年9月26日 · 北京友谊宾馆贵宾楼">
-<meta property="og:image" content="photos/share-cover.jpg">
-<meta property="og:url" content="/">
+<!-- Share crawlers must receive complete URLs without executing JavaScript. -->
+<meta property="og:image" content="https://lyc-wsy-wedding.click/photos/share-cover-v2.jpg">
+<meta property="og:image:secure_url" content="https://lyc-wsy-wedding.click/photos/share-cover-v2.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta property="og:image:alt" content="刘禹辰与王思越的合影">
+<meta property="og:url" content="https://lyc-wsy-wedding.click/">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://lyc-wsy-wedding.click/">
+<link rel="image_src" href="https://lyc-wsy-wedding.click/photos/share-cover-v2.jpg">
+<link rel="icon" type="image/jpeg" sizes="400x400" href="https://lyc-wsy-wedding.click/photos/share-cover-v2.jpg">
 
 <link rel="preconnect" href="https://fonts.loli.net">
 <link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
@@ -237,7 +246,7 @@ html,body{width:100%;height:100%;overflow:hidden;
 <body>
 
 <!-- 微信转发缩略图：移出屏幕但保留真实尺寸，便于微信抓取为分享卡片封面 -->
-<img class="wx-share" src="photos/share-cover.jpg" width="400" height="400" alt="刘禹辰 & 王思越 婚礼请柬">
+<img class="wx-share" src="https://lyc-wsy-wedding.click/photos/share-cover-v2.jpg" width="400" height="400" loading="eager" fetchpriority="high" alt="刘禹辰 & 王思越 婚礼请柬">
 
 <!-- 背景音乐：music/bgm.m4a（如换歌，替换该文件或改下面的 src）-->
 <audio id="bgm" src="music/bgm.m4a" loop preload="auto"></audio>
@@ -558,11 +567,6 @@ html,body{width:100%;height:100%;overflow:hidden;
     if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(cur-1);});
   animate(0);
 })();
-</script>
-<script>
-(function(){var o=location.origin;if(!o||o==='null')return;
-function s(p,v){var m=document.querySelector('meta[property="'+p+'"]');if(m)m.setAttribute('content',v);}
-s('og:url',o+'/');s('og:image',o+'/photos/share-cover.jpg');})();
 </script>
 <script>
 (function(){
