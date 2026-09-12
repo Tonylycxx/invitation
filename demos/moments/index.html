@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>点滴瞬间 · 相册样式对比</title>
+<link rel="stylesheet" href="moments.css">
+</head>
+<body>
+<header class="preview-bar"><a href="../../">返回请柬</a><nav aria-label="相册样式"><button data-mode="album" aria-pressed="true">纸质相册</button><button data-mode="editorial" aria-pressed="false">杂志拼页</button></nav><span class="preview-label">OUR MOMENTS / 样式预览</span></header>
+<main>
+<section id="album" class="paper" aria-label="纸质相册">
+<header class="page-heading"><span class="eyebrow">A COLLECTION OF US</span><h1>点滴<span>瞬间</span></h1><p>把平凡的日子，珍藏成永远。</p></header>
+<div class="album-stage"><button class="photo-button album-photo" aria-label="放大当前照片"><img id="album-image" src="assets/gold-portrait.jpg" alt="米金色背景婚纱合照"><span class="print-mark">LIU & WANG · OUR LITTLE FOREVER</span></button></div>
+<div class="album-caption"><span class="chapter" id="album-chapter"></span><p id="album-caption"></p></div>
+<footer class="pager"><button id="album-prev" aria-label="上一张照片">←</button><span id="album-count" role="status" aria-live="polite"></span><button id="album-next" aria-label="下一张照片">→</button></footer>
+</section>
+<section id="editorial" class="paper editorial" aria-label="杂志拼页" hidden>
+<header class="editorial-masthead"><span>OUR MOMENTS</span><span>刘禹辰 & 王思越</span></header>
+<div id="spread"></div>
+<footer class="pager"><button id="editorial-prev" aria-label="上一页相册">←</button><span id="editorial-count" role="status" aria-live="polite"></span><button id="editorial-next" aria-label="下一页相册">→</button></footer>
+</section>
+<p class="preview-note">轻点照片，查看完整画面</p>
+</main>
+<dialog id="lightbox" aria-label="完整照片"><button class="close" aria-label="关闭大图">×</button><img alt=""><p>点击空白处或按 Esc 关闭</p></dialog>
+<script src="moments.js"></script>
+</body></html>
