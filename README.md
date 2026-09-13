@@ -64,7 +64,7 @@ python3 -m http.server 8000
 
 分享地址为 `https://lyc-wsy-wedding.click/share`。`share.html` 把照片正常显示为第一张图片，没有脚本、离屏定位、隐藏或自动跳转；「打开完整请柬」按钮进入主页面。用户已确认此前的可见首图方案能在微信生成带图卡片；本次更换红底封面后的实际卡片仍需在微信中复验。
 
-两个页面都在初始 HTML 中提供分享标题、描述、封面绝对 HTTPS 地址、图片类型和尺寸。`og:image`、`og:image:secure_url`、`link[rel=image_src]`、网站图标和首图均指向 `photos/share-red-portrait-v3.jpg`。主请柬的 `img.wx-share` 仍为离屏辅助图，转发优先使用已验证的 `/share` 入口。
+两个页面都在初始 HTML 中提供分享标题、描述、封面绝对 HTTPS 地址、图片类型和尺寸。`og:image`、`og:image:secure_url`、`link[rel=image_src]`、网站图标和首图均指向 `photos/share-red-portrait-v3.jpg`。封面地址统一附带 `?v=20260913-red`，避开部署前被 CDN 缓存的 404 响应。主请柬的 `img.wx-share` 仍为离屏辅助图，转发优先使用已验证的 `/share` 入口。
 
 - **换封面**：保留旧文件，使用新 JPEG 文件名；同步更新两个页面的地址、宽高和图片说明，保持分享页首图可见。
 - **换域名或标题**：同步修改静态分享地址、`og:url`、`canonical`、`<title>` 与 `og:title`，不要依赖浏览器脚本补地址。
