@@ -164,3 +164,23 @@ body:has(#editorial:not([hidden])) .preview-note{flex:none;margin:8px 0 0;font-s
     .editorial.paper{max-width:min(460px,calc((100dvh - 320px) * 1200 / 821))}
   }
 }
+
+/* Opening registry spread: 4:3 upper crop keeps heads, hands and certificates;
+   the lower photo retains 1200:821. Combined height is width * 1721/1200 + gap. */
+@scope (.magazine.registry-opening) {
+  .spread-art{container-type:size}
+  .spread-art .registry-layout{
+    width:min(100%,calc((100cqh - 10px) / 1.434166667));
+    height:min(100%,calc(100cqw * 1.434166667 + 10px));
+    align-self:center;
+    grid-template-rows:minmax(0,900fr) minmax(0,821fr);
+    gap:10px;
+  }
+  .spread-art .registry-layout>div{height:100%;min-height:0;aspect-ratio:auto}
+  .spread-art .registry-layout>.photo-button img{object-fit:cover;object-position:50% 48%}
+  .spread-art .registry-layout>div img{object-fit:contain;object-position:center}
+  .editorial-masthead{padding-bottom:10px}
+  .editorial .spread-heading{margin:12px 0}
+  .editorial .spread-heading h2{margin:6px 0}
+  .editorial .spread-note{margin:8px 0 4px}
+}
